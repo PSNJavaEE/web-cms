@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:include="include :: header"></head>
+<link rel="stylesheet" type="text/css" href="/css/common/reset.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/settings.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/dist/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/modules/scientist/scientist.css" />
+	<body class="site_full preloader3 menu_no_transparent classic_menu horizontal_menu light_header dark_sup_menu" >
+		<div id="main_wrapper">
+			<div class="content_section">
+				<div class="hm_main_content full_content clearfix">
+					<div class="entry-content">
+						<div class="demand-content">
+							<ul class="demand-content-tab clearfix row marT30 " >
+								<li class="active marR0 over col-md-6 col-sm-6 fl">成果库</li>
+								<li class="fl marR0 over col-md-6 col-sm-6">需求库</li>
+							</ul>
+							<div class="content-demand-content maxW-1100 marT20 clearfix">
+								<div class="demand-content-div one row active col-xs-12">
+									<ul class="w-100 bg_ef screenList marT50 padT20 padL10" id="industryUl">
+										<label>行业类型:</label>
+										<li id="selectAll">全部</li>
+										<li>电子信息技术</li>
+										<li>生物与新医药技术</li>
+										<li>高新技术改造传统行业</li>
+										<li>高新技术服务业</li>
+										<li>航空航天技术</li>
+										<li>新能源及节能技术</li>
+										<li>资源与环境技术</li>
+										<li>新材料技术</li>
+									</ul>
+									<ul class="row maxW-1060 mar0 pad25" id="rows">
+
+									</ul>
+								</div>
+								<div class="demand-content-div one row  col-xs-12">
+									<ul class="w-100 bg_ef screenList marT50 padT20 padL10">
+										<label>行业类型:</label>
+										<li>全部</li>
+										<li class="active">电子信息</li>
+										<li>生物医疗</li>
+										<li>材料化学</li>
+										<li>工程机械</li>
+										<li>仪器设备</li>
+										<li>其他</li>
+									</ul>
+									<ul class="row maxW-1060 mar0 pad25">
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:include="include::footer"></div>
+		<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/common/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/js/layui.js"></script>
+		<script src="/js/appjs/industry/outCome/outCome.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(".demand-content-tab li").click(function() {
+					$(this).addClass("active").siblings().removeClass("active");
+					$(".content-demand-content > .demand-content-div").eq($(this).index()).show().siblings().hide();
+				});
+			})
+			
+		</script>
+	</body>
+</html>

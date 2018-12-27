@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<div class="col-sm-12">
+						<h4>添加新闻类型</h4>
+					</div>
+					<form class="form-horizontal m-t" id="signupForm">
+						<div class="form-group">
+							<label class="col-sm-1 control-label">类型名：</label>
+							<div class="col-sm-4">
+								<input id="name" name="name" class="form-control" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">类型描述：</label>
+							<div class="col-sm-10">
+								<textarea id="description" name="description" class="form-control" rows="2"></textarea>
+							</div>
+						</div>
+
+						<div class="messsage border-none">
+							<label>上传图片<i class="choseone"></i></label>
+							<div class="upload pr">
+								<div class="upload pr">
+									<div class="form-group">
+										<div class="layui-input-block col-sm-8">
+											<div class="layui-upload-list pr">
+												<img src="/img/file-img.png" class="pa file-img"/>
+												<img src="/img/addfile.png" class="upimg" id="upload-logo" />
+											</div>
+											<input id="image" name="image"  type="hidden"/>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<p class="f12 color_B padT10">文件不能超过4M</p>
+						</div>
+
+						<input type="button" id="up-btn" class="up-btn" value="提交">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/layui.js"></script>
+<script type="text/javascript">
+
+
+var image = "";
+$(function() {
+	var flag = true;
+
+	//上传图片
+		layui.use('upload', function() {
+				var $ = layui.jquery, upload = layui.upload;
+
+				//选完文件后不自动上传
+				upload.render({
+						elem: '#upload-logo',
+						url: '/inf/news/uploadImage',
+						auto: false,
+						processData: false,    // 不处理数据
+						contentType: false,
+						multiple: true,
+						choose: function (obj) {
+							console.log(obj)
+								//预读本地文件示例，不支持ie8
+								obj.preview(function (index, file, result) {
+										$('#upload-logo').attr('src', result); //图片链接（base64）
+										$('.file-img').addClass('active');
+										$("#upload-logo").addClass("active");
+								});
+						},
+						bindAction: '#up-btn',
+						done: function (res) {
+								$("#image").attr('value', res.url);
+								console.log(res.url);
+								image = res.url;
+								ajaxSubmit();
+								return layer.msg(res.msg, {icon: res.status, time: 2000});
+						}
+				});
+		})
+})
+$("#up-btn").on('click',function(){
+	if(!$("#upload-logo").hasClass("active")){
+		ajaxSubmit();
+	}
+});
+function ajaxSubmit(){
+
+		var name = $("#name").val();
+		var description = $("#description").val();
+
+
+		if (name.trim().length<=0) {
+			mask("请输入类型名称")
+			return;
+		}else if (description.trim().length<1) {
+			mask("请输入类型描述")
+			return;
+		}
+		var reqData = {};
+		reqData.name = name;
+		reqData.description = description;
+		reqData.image = image;
+
+		$.ajax({
+		cache : true,
+		type : "POST",
+		url : "/inf/newsCategory/save",
+		data : reqData,
+		async : false,
+		error : function(request) {
+			parent.layer.alert("Connection error");
+		},
+		success : function(r) {
+			if (r.code == 0) {
+				if(confirm("操作成功,返回列表？")){
+					window.opener=null;
+					window.open('','_self');
+					window.close();
+					parent.location.reload()
+				}
+
+			} else {
+				parent.layer.alert(r.msg)
+			}
+		}
+	});
+}
+function mask(text){
+	$('body').append('<div class="prompt"></div>'+
+						'<p class="pText">'+text+'</p>');
+	setTimeout(function(){
+		$(".prompt").remove();
+		$(".pText").remove();
+	},1000)
+}
+</script>
+</body>
+</html>

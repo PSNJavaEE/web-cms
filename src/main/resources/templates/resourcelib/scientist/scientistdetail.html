@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+	<!--<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>资源库-科学家</title>
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/settings.css" />
+		<link rel="stylesheet" type="text/css" href="../../../dist/css/swiper.min.css" />
+
+		<script src="../../../js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/scientistdetail.js" type="text/javascript" charset="utf-8"></script>
+	</head>-->
+
+	<link rel="stylesheet" type="text/css" href="/css/common/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/css/common/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/modules/resourcelib/scientist/scientistdetail.css" />
+	<link rel="stylesheet" type="text/css" href="/css/common/settings.css" />
+	<link rel="stylesheet" type="text/css" href="/css/common/dist/swiper.min.css" />
+
+	<head th:include="include :: header"></head>
+	<body class="site_full preloader3 menu_no_transparent classic_menu horizontal_menu light_header dark_sup_menu" style="background:#efefef">
+		<div id="main_wrapper">
+			<!-- End Header -->
+			<div class="content_section">
+				<div class="hm_main_content full_content clearfix">
+					<div class="entry-content">
+						<div class="science-detail clearfix">
+							<img src="" class="top-img" />
+							<div class="top-content">
+								<p class="borderB padT20 padB20">
+									<span class="f18 fw600 color_333">石纯一</span>
+									<label class="fr achieve row">
+										<span class="w-19 dib tc">
+											论文成果
+											<i class="db tc">22</i>
+										</span>
+										<span class="w-19 dib tc">
+											合作项目
+											<i class="db tc">22</i>
+										</span>
+										<span class="w-19 dib tc">
+											发明专利
+											<i class="db tc">22</i>
+										</span>
+										<span class="w-19 dib tc">
+											引用指数
+											<i class="db tc">22</i>
+										</span>
+										<span class="w-19 dib tc">
+											H因子
+											<i class="db tc">22</i>
+										</span>
+									</label>
+								</p>
+								<div>
+									<div class="w-50 fl">
+										<p>领域：人工智能、算法理论</p>
+										<p>机构：清华大学计算机科学与技术系</p>
+									</div>
+									<div class="fl">
+										<a class="expert-btn marT20">联系专家</a>
+										<a class="needs-btn marT20">发布需求</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="science-detail-list marT50 clearfix">
+							<ul class="content-telent-tab clearfix marT30 " style="">
+								<li class="active marR0 over fl">合作团队</li>
+								<li class="fl marR0 over">论文成果</li>
+								<li class="fl marR0 over">科研项目</li>
+								<li class="fl  marR0 over">发明专利</li>
+							</ul>
+							<div class="content-telent-content marT20">
+								<div class="telent-content-div one row active col-xs-12">
+									<ul class="col-md-5 col-sm-5">
+										<li class="lh30">
+											<p class="over"><span class="order-num">1</span>彭帅楠 清华大学计算机系 领域：人工智能、大数据算法</p>
+										</li>
+										<li class="lh30">
+											<p class="over"><span class="order-num">2</span>彭帅楠 清华大学计算机系 领域：人工智能、大数据算法</p>
+										</li>
+										<li class="lh30">
+											<p class="over"><span class="order-num">3</span>彭帅楠 清华大学计算机系 领域：人工智能、大数据算法</p>
+										</li>
+										<li class="lh30">
+											<p class="over"><span class="order-num">4</span>彭帅楠 清华大学计算机系 领域：人工智能、大数据算法</p>
+										</li>
+										<li class="lh30">
+											<p class="over"><span class="order-num">5</span>彭帅楠 清华大学计算机系 领域：人工智能、大数据算法</p>
+										</li>
+										<li class="lh30">
+											<p class="over"><span class="order-num">6</span>彭帅楠 清华大学计算机系 领域：人工智能、大数据算法</p>
+										</li>
+										<li class="lh30">
+											<p class="over"><span class="order-num">7</span>彭帅楠 清华大学计算机系 领域：人工智能、大数据算法</p>
+										</li>
+									</ul>
+									<div id="team" class="col-md-5 col-sm-5" style="height:500px; margin-top:-50px;"></div>
+								</div>
+								<div class="telent-content-div two clearfix  col-xs-12">
+									<ul class="col-md-4 col-sm-4">
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+									</ul>
+									<div class="col-md-7 col-sm-7 marL30">
+										<img src="../images/share-index.png" />
+									</div>
+								</div>
+								<div class="telent-content-div two  col-xs-12">
+									<ul class="col-md-4 col-sm-4">
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+									</ul>
+									<div class="col-md-7 col-sm-7 marL30">
+										<img src="../images/share-index.png" />
+									</div>
+								</div>
+								<div class="telent-content-div two  col-xs-12">
+									<ul class="col-md-4 col-sm-4">
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+										<li class="marB10">
+											<a class="db">
+												<label class="db w-100 clearfix">
+													<p class="over w-80 fl f14 color_3E marB0">
+													人工智能时代的司法权之变
+													</p>
+													<span class="fr f12 color_ccc">2018</span>
+												</label>
+												<label  class="db w-100 clearfix">
+													<span class="w-50 dib over f12 fl color_ccc marR10">作者：李毅,罗翊,石纯一</span>
+													<span class="w-50 dib over f12 fl color_ccc">期刊：《计算机研究与发展》</span>
+												</label>
+											</a>
+										</li>
+									</ul>
+									<div class="col-md-7 col-sm-7   marT80">
+										<a class="patent-btn marL80">专利合作</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:include="include::footer"></div>
+		<script src="/js/appjs/data/industry/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="/js/appjs/resourcelib/scientist/scientistdetail.js" type="text/javascript" charset="utf-8"></script>-->
+
+		<script src="/js/appjs/resourcelib/scientist/scientistdetaildata.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+            var content = content;
+            var colors = "";
+            var data = "";
+            var optionData = "";
+			$(function(){
+                getJSData("合作团队");
+			});
+
+            function getJSData(loation){
+                console.info(content);
+                var titleTap = content.titleTap;
+                var code = "-1";
+                for(i = 0; i<titleTap.length; i++){
+                    if(titleTap[i].name == loation){
+                        code = titleTap[i].code;
+                        console.info(code);
+                    }
+                }
+                data = content.data[code];
+                console.info(data);
+                cloudChart(data);
+            }
+
+            function cloudChart(data){
+                console.info(data)
+                let dom = document.getElementById("team");
+                let myChart = echarts.init(dom);
+                let app = {};
+                option = null;
+                // var colors = ['#9C27B0','#FF4081'];
+                var colors = data.colors;
+
+                var datas = data.datas;
+                console.info(datas);
+                for (var i = 0; i < datas.length; i++) {
+                    if (i === 0) {
+                        datas[i].itemStyle = {
+                            normal: {
+                                color: colors[0]
+                            }
+                        };
+                    } else {
+                        datas[i].itemStyle = {
+                            normal: {
+                                color: colors[1]
+                            }
+                        };
+                    }
+                }
+
+                option = data.cloudChart;
+                myChart.on("mouseover", function(data) {
+                    // 取消节点连接线触发效果
+                    if (data.dataType == "edge") {
+                        myChart.dispatchAction({
+                            type: 'unfocusNodeAdjacency',
+                            seriesIndex: 0
+                        });
+                    }
+                })
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+            };
+
+
+			$(function() {
+				$(".content-telent-tab li").click(function() {
+					$(this).addClass("active").siblings().removeClass("active");
+					$(".content-telent-content > .telent-content-div").eq($(this).index()).show().siblings().hide();
+				});
+			})
+		</script>
+	</body>
+</html>

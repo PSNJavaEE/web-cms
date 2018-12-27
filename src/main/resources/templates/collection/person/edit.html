@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="col-sm-12">
+                        <h4>编辑基本信息</h4>
+                    </div>
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <input id="id" name="id" type="hidden"
+                               th:value="${person != null}?${person.id}">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">姓名：</label>
+                            <div class="col-sm-3">
+                                <input id="userName" name="userName" class="form-control" type="text"
+                                       th:value="${person != null}?${person.userName}">
+                            </div>
+                            <label class="col-sm-1 control-label">性别：</label>
+
+                                <div class="col-sm-3">
+                                    <input name="sex"  th:checked="${person.sex == '0'}"
+                                           type="radio" value="0">男
+                                    <input name="sex" th:checked="${person.sex == '1'}"
+                                           type="radio" value="1">女
+                                </div>
+                            <label class="col-sm-1 control-label">电话：</label>
+                            <div class="col-sm-3">
+                                <input id="moible" name="moible" class="form-control"
+                                       type="text" th:value="${person != null}?${person.moible}">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-sm-1 control-label">学历：</label>
+                            <div class="col-sm-3">
+                                <select name="highestEdu" id="highestEdu" class="form-control">
+                                    <option value="">--请选择学历--</option>
+                                    <option th:value="大专" th:selected="${ '大专'==person.highestEdu}">大专</option>
+                                    <option th:value="本科" th:selected="${ '本科'==person.highestEdu}">本科</option>
+                                    <option th:value="硕士" th:selected="${ '硕士'==person.highestEdu}">硕士</option>
+                                    <option th:value="博士及以上" th:selected="${ '博士及以上'==person.highestEdu}">博士及以上</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-1 control-label">学校：</label>
+                            <div class="col-sm-3">
+                                <input name="university" id="university" class="form-control" type="text"
+                                       placeholder="学校"
+                                       th:value="${person != null}?${person.university}">
+                            </div>
+                            <label class="col-sm-1 control-label">记录状态：</label>
+                            <div class="col-sm-3">
+                                <select name="recordState" id="recordState" class="form-control">
+                                    <option value="">--请选择记录状态--</option>
+                                    <option th:value="0" th:selected="${ '0'==person.recordState}">已删除</option>
+                                    <option th:value="1" th:selected="${ '1'==person.recordState}">正常</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">专业方向：</label>
+                            <div class="col-sm-3">
+                                <input name="profession" id="profession" class="form-control" type="text"
+                                       placeholder="专业方向"
+                                       th:value="${person != null}?${person.profession}">
+                            </div>
+                            <label class="col-sm-1 control-label">意向行业：</label>
+                            <div class="col-sm-3">
+                                <input id="hopeIndustry" name="hopeIndustry" class="form-control"
+                                       th:value="${person != null}?${person.hopeIndustry}" rows="3"></input>
+                            </div>
+
+                            <label class="col-sm-1 control-label">求职岗位：</label>
+                            <div class="col-sm-3">
+                                <input id="hopePost" name="hopePost" class="form-control"
+                                       th:value="${person != null}?${person.hopePost}" rows="3"></input>
+                            </div>
+                        </div>
+
+
+                        <div class="messsage border-none">
+                            <label>上传简历<i class="choseone"></i></label>
+                            <div class="upload pr">
+                                <!-- <input type="file" id="uploadFile" name="uploadFile" class="uploadFile"/> -->
+                                <!-- <img src="images/addfile.png" class="upimg" id="upimg"/> -->
+                                <div class="form-group">
+                                    <div class="layui-input-block col-sm-8">
+                                        <div class="layui-upload-list">
+                                            <img src="/img/file-img.png" class="pa file-img"/>
+                                            <img th:src="${person.attachUrl}"  class="upimg" id="upload-logo" />
+                                        </div>
+                                        <input id="image" name="attachUrl"  type="hidden"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="f12 color_B padT0" style="width:100%;">支持格式：.rar .zip .doc .docx .pdf ，文件不能超过2M</p>
+                        </div>
+
+                        <input type="button" class="up-btn" id="up-btn" value="提交">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/layui.js"></script>
+<script type="text/javascript" src="/js/appjs/collection/person/edit.js"></script>
+<script type="text/javascript">
+        var attachUrl = "";
+
+        $(function() {
+            //上传图片
+                    layui.use('upload', function() {
+                            var $ = layui.jquery, upload = layui.upload;
+
+                            //选完文件后不自动上传
+                            upload.render({
+                                    elem: '#upload-logo',
+                                    url: '/collection/person/uploadImage',
+                                    auto: false,
+                                    processData: false ,    // 不处理数据
+                                    contentType: false,
+                                    multiple: true,
+                                    choose: function (obj) {
+                                            //预读本地文件示例，不支持ie8
+                                            obj.preview(function (index, file, result) {
+                                                    $('#upload-logo').attr('src', result); //图片链接（base64）
+                                                    $('.file-img').addClass('active');
+                                                    $("#upload-logo").addClass("active");
+                                            });
+                                    },
+                                    bindAction: '#up-btn',
+                                    done: function (res) {
+                                            $("#image").attr('value', res.url);
+                                            <!--//console.log(res.url);-->
+                                            attachUrl = res.url;
+                                            ajaxSubmit();
+                                            return layer.msg(res.msg, {icon: res.status, time: 2000});
+                                    }
+                            });
+                    })
+
+        })
+    $("#up-btn").click(function(){
+        if(!$("#upload-logo").hasClass("active")){
+            ajaxSubmit();
+        }
+    });
+    function ajaxSubmit(){
+        var telReg = /^1[3|5|7|8][0-9]{9}$/;
+
+                var sexV =  $('input[name="sex"]:checked').val();   //拿到选中项的值
+                var userNameV = $("#userName").val();
+                var idv = $("#id").val();
+                var moibleV = $("#moible").val();
+                var highestEdu=$("#highestEdu option:selected");
+                var highestEduV = highestEdu.val();
+
+                var recordState=$("#recordState option:selected");
+                var recordStateV = recordState.val();
+
+                var universityV = $("#university").val();
+                var professionV = $("#profession").val();
+
+                var hopeIndustryV = $("#hopeIndustry").val();
+
+                var hopePostV = $("#hopePost").val();
+                if (userNameV.trim().length<=0) {
+                    mask("请输入姓名")
+                    return;
+                }else if (highestEduV.trim().length<1) {
+                    mask("请输入您的学历")
+                    return;
+                }else if (universityV.trim().length<1) {
+                    mask("请输入您的学校")
+                    return;
+                }else if (!telReg.test(moibleV)) {
+                    mask("请输入正确的联系电话")
+                    return;
+                }else if (hopePostV.trim().length<1) {
+                    mask("请输入求职岗位")
+                    return;
+                }
+
+
+                var reqData = {};
+
+                reqData.id = idv;
+                reqData.userName = userNameV;
+                reqData.moible = moibleV;
+                reqData.highestEdu = highestEduV;
+                reqData.recordState = recordStateV;
+                reqData.university = universityV;
+                reqData.profession = professionV;
+                reqData.hopePost = hopePostV;
+                reqData.hopeIndustry = hopeIndustryV;
+                reqData.sex = sexV;
+                reqData.attachUrl = attachUrl;
+                var url = "/collection/person/save";
+                //发送post请求保存baomingshuju
+                alert(reqData);
+                $.ajax({
+                    cache : true,
+                    type : "POST",
+                    url : "/collection/person/update",
+                    data : reqData,// 你的formid
+                    async : false,
+                    error : function(request) {
+                        parent.layer.alert("Connection error");
+                    },
+                    success : function(r) {
+                        if (r.code == 0) {
+                            // parent.layer.msg(r.msg);
+                            // parent.reLoad();
+
+                            if(confirm("操作成功,返回列表？")){
+                                window.opener=null;
+                                window.open('','_self');
+                                window.close();
+                                parent.location.reload()
+                            }
+
+                        } else {
+                            parent.layer.alert(r.msg)
+                        }
+                    }
+                });
+
+        }
+
+        function mask(text){
+            $('body').append('<div class="prompt"></div>'+
+                                '<p class="pText">'+text+'</p>');
+            setTimeout(function(){
+                $(".prompt").remove();
+                $(".pText").remove();
+            },1000)
+        }
+</script>
+
+</body>
+</html>

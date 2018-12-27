@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<div class="col-sm-12">
+						<h4>编辑职位</h4>
+					</div>
+					<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" type="hidden"
+							   th:value="${post != null}?${post.id}">
+						<div class="form-group">
+							<label class="col-sm-1 control-label">岗位名称：</label>
+							<div class="col-sm-4">
+								<input id="postName" name="postName" class="form-control" type="text"
+									   th:value="${post != null}?${post.postName}">
+							</div>
+							<label class="col-sm-1 control-label">招聘人数：</label>
+							<div class="col-sm-4">
+								<input id="recruitNum" name="recruitNum" class="form-control"
+									   type="text" th:value="${post != null}?${post.recruitNum}">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-1 control-label">所属部门：</label>
+							<div class="col-sm-4">
+								<input id="deptName" name="deptName" class="form-control"
+									   type="text" th:value="${post != null}?${post.deptName}">
+							</div>
+							<label class="col-sm-1 control-label">工作地点：</label>
+							<div class="col-sm-4">
+								<input id="address" name="address" class="form-control" type="text"
+									   th:value="${post != null}?${post.address}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">薪资范围：</label>
+								<div class="col-sm-２">
+									<input name="postSalary" id="postSalary" class="form-control" type="text" placeholder="工作地点"
+										   th:value="${post != null}?${post.postSalary}">
+								</div>
+							// 0-草稿；1-已发布；2-已下线；3-已删除
+							<label class="col-sm-1 control-label">发布状态：</label>
+							<div class="col-sm-10">
+								<select name="recordState" id="recordState" class="form-control" >
+									<option value="">--请选择职位状态--</option>
+									<option  th:value="0" th:selected="${ '0'==post.recordState}">草稿</option>
+									<option  th:value="1" th:selected="${ '1'==post.recordState}">已发布</option>
+									<option  th:value="2" th:selected="${ '2'==post.recordState}">已下线</option>
+									<option  th:value="3" th:selected="${ '3'==post.recordState}">已删除</option>
+								</select>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+						<label class="col-sm-1 control-label">学历要求：</label>
+						<div class="col-sm-2">
+							<input name="reqEdu" id="reqEdu" class="form-control" type="text" placeholder="学历要求"
+								   th:value="${post != null}?${post.reqEdu}">
+						</div>
+						<label class="col-sm-1 control-label">工作经验：</label>
+						<div class="col-sm-2">
+							<input name="reqExp" id="reqExp" class="form-control" type="text" placeholder="工作经验"
+								   th:value="${post != null}?${post.reqExp}">
+						</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-1 control-label">岗位要求：</label>
+							<div class="col-sm-11">
+								<textarea id="reqPost" name="reqPost" class="form-control" th:text="${post != null}?${post.reqPost}" rows="3"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">岗位描述：</label>
+							<div class="col-sm-11">
+								<textarea id="postDesc" name="postDesc" class="form-control" th:text="${post != null}?${post.postDesc}" rows="3"></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button id="submitButton" class="btn btn-primary" onclick="edit(1)" type="button">&nbsp;&nbsp;&nbsp;&nbsp;保&nbsp;&nbsp;&nbsp;&nbsp;存&nbsp;&nbsp;&nbsp;&nbsp;</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/post/edit.js"></script>
+
+</body>
+</html>

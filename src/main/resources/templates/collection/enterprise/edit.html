@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" http-equiv="refresh" >
+<link rel="stylesheet" type="text/css" href="static/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="static/css/index.css"/>
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="col-sm-12">
+                        <h4>编辑企业信息</h4>
+                    </div>
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <input id="id" name="id" type="hidden"
+                               th:value="${enterprise != null}?${enterprise.id}">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">企业名称：</label>
+                            <div class="col-sm-3">
+                                <input id="entpName" name="entpName" class="form-control" type="text"
+                                       th:value="${enterprise != null}?${enterprise.entpName}">
+                            </div>
+                            <label class="col-sm-1 control-label">联系人：</label>
+                            <div class="col-sm-3">
+                                <input id="corporation" name="corporation" class="form-control"
+                                       type="text" th:value="${enterprise != null}?${enterprise.corporation}">
+                            </div>
+                            <label class="col-sm-1 control-label">联系电话：</label>
+                            <div class="col-sm-3">
+                                <input id="entpPhone" name="entpPhone" class="form-control"
+                                       type="text" th:value="${enterprise != null}?${enterprise.entpPhone}">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">所在行业：</label>
+
+                            <div  class="col-sm-11">
+
+                                <input name="entpIndustry"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.entpIndustry,'互联网IT')}"
+                                       value="互联网IT">互联网IT
+                                <input name="entpIndustry"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.entpIndustry,'金融')}"
+                                       value="金融">金融
+                                <input name="entpIndustry"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.entpIndustry,'房地产/建筑')}"
+                                       value="房地产/建筑">房地产/建筑
+                                <input name="entpIndustry"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.entpIndustry,'贸易/零售/物流')}"
+                                       value="贸易/零售/物流">贸易/零售/物流
+                                <input name="entpIndustry"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.entpIndustry,'教育/传媒/广告')}"
+                                       value="教育/传媒/广告">教育/传媒/广告
+                                <input name="entpIndustry"  type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.entpIndustry,'服务业')}"
+                                       value="服务业">服务业
+                                <input name="entpIndustry"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.entpIndustry,'市场/销售')}"
+                                       value="市场/销售">市场/销售
+                                <input name="entpIndustry"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.entpIndustry,'企业管理')}"
+                                       value="企业管理">企业管理
+                                <input id="elseInsdustry" name="entpIndustry" type="text" placeholder="其他行业">
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">人才需求类型：</label>
+
+                            <div  class="col-sm-11">
+                                <input name="personnelType" type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelType,'技术类人才')}"
+                                       value="技术类人才">技术类人才
+                                <input name="personnelType"  type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelType,'管理类人才')}"
+                                       value="管理类人才">管理类人才
+                                <input name="personnelType"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelType,'生产类人才')}"
+                                       value="生产类人才">生产类人才
+                                <input name="personnelType"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelType,'市场类人才')}"
+                                       value="市场类人才">市场类人才
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">人才学历要求：</label>
+                            <div  class="col-sm-11">
+                                <input name="personnelEdu"  type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelEdu,'大专')}"
+                                       value="大专">大专
+                                <input name="personnelEdu"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelEdu,'本科')}"
+                                       value="本科">本科
+                                <input name="personnelEdu"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelEdu,'硕士')}"
+                                       value="硕士">硕士
+                                <input name="personnelEdu"  type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelEdu,'博士及以上')}"
+                                       value="博士及以上">博士及以上
+                                <input name="personnelEdu"   type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelEdu,'高级工艺类人才')}"
+                                       value="高级工艺类人才">高级工艺类人才
+                                <input name="personnelEdu"  type="checkbox"
+                                       th:checked="${#strings.contains(enterprise.personnelEdu,'行业专家、教授、院士')}"
+                                       value="行业专家、教授、院士">行业专家、教授、院士
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">状态：</label>
+                            <div class="col-sm-4">
+                                <select name="recordState" id="recordState" class="form-control">
+                                    <option value="">--请选择状态--</option>
+                                    <option th:value="0" th:selected="${ '0'==enterprise.recordState}">删除</option>
+                                    <option th:value="1" th:selected="${ '1'==enterprise.recordState}">正常</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">主营业务：</label>
+                            <div class="col-sm-11">
+                                <textarea id="mainBusiness" name="mainBusiness" class="form-control"
+                                          th:text="${enterprise != null}?${enterprise.mainBusiness}"
+                                          rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="messsage border-none">
+                            <label>上传企业信息<i class="choseone">(选填)</i></label>
+                            <div class="upload pr">
+                                <div class="upload pr">
+                                    <!-- <input type="file" id="uploadFile" name="uploadFile" class="uploadFile"/> -->
+                                    <!-- <img src="images/addfile.png" class="upimg" id="upimg"/> -->
+                                    <div class="form-group">
+                                        <div class="layui-input-block col-sm-8">
+                                            <div class="layui-upload-list pr">
+                                                <img src="/img/file-img.png" class="pa file-img"/>
+                                                <img th:src="${enterprise.enclosureUrl}"  class="upimg" id="upload-logo" />
+                                            </div>
+                                            <input id="image" name="enclosureUrl"  type="hidden"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <p class="f12 color_B padT10">支持格式：.rar .zip .doc .docx .pdf ，文件不能超过10M</p>
+                        </div>
+                        <input type="button" id="up-btn" class="up-btn" value="提交">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/collection/enterprise/edit.js"></script>
+<script type="text/javascript" src="/js/layui.js"></script>
+<script type="text/javascript">
+        var enclosureUrl = "";
+        $(function() {
+            var flag = true;
+
+            //上传图片
+                layui.use('upload', function() {
+                        var $ = layui.jquery, upload = layui.upload;
+
+                        //选完文件后不自动上传
+                        upload.render({
+                                elem: '#upload-logo',
+                                url: '/collection/person/uploadImage',
+                                auto: false,
+                                processData: false ,    // 不处理数据
+                                contentType: false,
+                                multiple: true,
+                                choose: function (obj) {
+                                    console.log(obj)
+                                        //预读本地文件示例，不支持ie8
+                                        obj.preview(function (index, file, result) {
+                                                $('#upload-logo').attr('src', result); //图片链接（base64）
+                                                $('.file-img').addClass('active');
+                                                $("#upload-logo").addClass("active");
+                                        });
+                                },
+                                bindAction: '#up-btn',
+                                done: function (res) {
+                                        $("#image").attr('value', res.url);
+                                        console.log(res.url);
+                                        enclosureUrl = res.url;
+                                        ajaxSubmit();
+                                        //console.log()
+                                        return layer.msg(res.msg, {icon: res.status, time: 2000});
+                                }
+                        });
+                })
+        })
+        $("#up-btn").on('click',function(){
+            if(!$("#upload-logo").hasClass("active")){
+                ajaxSubmit();
+            }
+        });
+        function ajaxSubmit(){
+
+                var telReg = /^1[3|5|7|8][0-9]{9}$/;
+                var idv = $("#id").val();
+                var entpNameV = $("#entpName").val();
+                var corporationV = $("#corporation").val();
+                var entpPhoneV = $("#entpPhone").val();
+                var mainBusinessV = $('#mainBusiness').val();
+                var recordState=$("#recordState option:selected");
+                var recordStateV = recordState.val();
+                //企业类型
+                var  insdustrys = $('input:checkbox[name="entpIndustry"]:checked');
+                var insdutryv = '';
+                for (var i = 0; i < insdustrys.length; i ++) {
+                  //利用三元运算符去点
+                  insdutryv += insdustrys[i].value + (i == insdustrys.length - 1 ? '':',');
+                }
+                var elseInsdustry = $('#elseInsdustry').val();
+                if (elseInsdustry.trim().length>1){
+                    insdutryv = insdutryv+","+elseInsdustry.trim()
+                }
+                //人才类型
+                var  perTypes = $('input:checkbox[name="perType"]:checked');
+                var personnelTypeV = '';
+                for (var i = 0; i < perTypes.length; i ++) {
+                  //利用三元运算符去点
+                  personnelTypeV += perTypes[i].value + (i == perTypes.length - 1 ? '':',');
+                }
+
+                // 学历要求 perEdu
+                var  perEdus = $('input:checkbox[name="perEdu"]:checked');
+                var personnelEduV = '';
+                for (var i = 0; i < perEdus.length; i ++) {
+                  //利用三元运算符去点
+                  personnelEduV += perEdus[i].value + (i == perEdus.length - 1 ? '':',');
+                }
+
+
+                if (entpNameV.trim().length<=0) {
+                    mask("请输入企业名称")
+                    return;
+                }else if (mainBusinessV.trim().length<1) {
+                    mask("请输入主营业务")
+                    return;
+                }else if (entpPhoneV.trim().length<1) {
+                    mask("请输入联系电话")
+                    return;
+                }else if (corporationV.trim().length<1) {
+                    mask("请输入联系人")
+                    return;
+                }
+                var reqData = {};
+                reqData.id = idv;
+                reqData.entpName = entpNameV;
+                reqData.corporation = corporationV;
+                reqData.entpPhone = entpPhoneV;
+                reqData.entpIndustry = insdutryv;
+                reqData.personnelType = personnelTypeV;
+                reqData.personnelEdu = personnelEduV;
+                reqData.enclosureUrl = enclosureUrl;
+                reqData.mainBusiness = mainBusinessV;
+                reqData.recordState = recordStateV;
+                console.log(reqData)
+
+                $.ajax({
+                cache : true,
+                type : "POST",
+                url : "/collection/enterprise/update",
+                data : reqData,// 你的formid
+                async : false,
+                error : function(request) {
+                    parent.layer.alert("Connection error");
+                },
+                success : function(r) {
+                    if (r.code == 0) {
+                        // parent.layer.msg(r.msg);
+                        // parent.reLoad();
+
+                        if(confirm("操作成功,返回列表？")){
+                            window.opener=null;
+                            window.open('','_self');
+                            window.close();
+                            parent.location.reload()
+                        }
+
+                    } else {
+                        parent.layer.alert(r.msg)
+                    }
+                }
+            });
+        }
+        function mask(text){
+            $('body').append('<div class="prompt"></div>'+
+                                '<p class="pText">'+text+'</p>');
+            setTimeout(function(){
+                $(".prompt").remove();
+                $(".pText").remove();
+            },1000)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>资源库-科学家</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/common/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/common/style.css" />
+		<link rel="stylesheet" type="text/css" href="/css/common/settings.css" />
+		<link rel="stylesheet" type="text/css" href="/css/common/dist/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/modules/scientist/scientist.css" />
+		<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/common/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+
+	</head>
+	<body class="site_full preloader3 menu_no_transparent classic_menu horizontal_menu light_header dark_sup_menu" style="background:#efefef">
+		<div id="main_wrapper">
+			<!-- End Header -->
+			<div class="content_section">
+				<div class="hm_main_content full_content clearfix">
+					<div class="entry-content">
+						<div class="science-detail clearfix">
+							<img src="/img/moren.jpg" class="top-img" />
+							<div class="top-content">
+								<p class="borderB padT20 padB20">
+									<span class="f18 fw600 color_333" th:text="${scSelf.scName}"></span>
+									<label class="fr achieve row">
+										<input type="hidden" th:value="${scSelf.uri}" id="uri">
+										<input type="hidden" th:value="${scSelf.id}" id="id">
+										<input type="hidden" th:value="${scSelf.domain}" id="domain">
+										<input type="hidden" th:value="${scSelf.tagCloud}" id="tagCloud">
+										<span class="w-19 dib tc">
+											论文成果
+											<i class="db tc" th:text="${scSelf.paperNum}"></i>
+										</span>
+										<span class="w-19 dib tc">
+											H因子
+											<i class="db tc" th:text="${scSelf.HFactor}"></i>
+										</span>
+										<span class="w-19 dib tc">
+											引用指数
+											<i class="db tc" th:text="${scSelf.quoteRate}"></i>
+										</span>
+									</label>
+								</p>
+								<div>
+									<div class="w-50 fl">
+										<p>领域：<span th:text="${scSelf.scDomain}"></span></p>
+										<p>机构：<span th:text="${scSelf.scOrg}"></span></p>
+									</div>
+									<div class="fl">
+										<a class="expert-btn marT20">联系专家</a>
+										<a class="needs-btn marT20">发布需求</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="science-detail-list marT50 clearfix">
+							<ul class="content-telent-tab clearfix marT30 " style="">
+								<li class="active marR0 over fl">合作团队</li>
+								<li class="fl marR0 over">论文成果</li>
+								<li class="fl marR0 over">科研项目</li>
+								<li class="fl marR0 over">发明专利</li>
+							</ul>
+							<div class="content-telent-content marT20">
+								<div class="telent-content-div one row active col-xs-12">
+									<ul class="col-md-5 col-sm-5" id="telist">
+									</ul>
+									<div id="team" class="col-md-5 col-sm-5" style="height:500px; margin-top:-50px;"></div>
+								</div>
+								<div class="telent-content-div two clearfix  col-xs-12">
+									<ul class="col-md-4 col-sm-4" id="pplist">
+									</ul>
+									<div id="chart" class="col-md-7 col-sm-7 marL30" style="width: 500px; height: 350px;"></div>
+								</div>
+								<div class="telent-content-div two  col-xs-12" >
+									<ul class="col-md-4 col-sm-4" id="prlist">
+
+									</ul>
+									<div id="chart1" class="col-md-7 col-sm-7 marL30" style="width: 500px; height: 350px;"></div>
+								</div>
+								<div class="telent-content-div two  col-xs-12">
+									<ul class="col-md-4 col-sm-4" id="palist">
+
+									</ul>
+									<div class="col-md-7 col-sm-7   marT80">
+										<a class="patent-btn marL80">专利合作</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script src="http://gallerybox.echartsjs.com/dep/echarts/3.8.0/echarts.min.js"></script>
+		<script src="http://data-visual.cn/datav/src/js/echarts/extension/echarts-wordcloud.min.js"></script>
+		<script src="/js/appjs/repository/scientist/scientistdetail.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/appjs/repository/scientist/scientistdetaildata.js"></script>
+		<script>
+			var tagCloud = document.getElementById('tagCloud').value;
+			var datas = [];
+			var tagClouds = tagCloud.split(',');
+			if(tagClouds.length > 0){
+				for(var i = 0;i<tagClouds.length; i++){
+					var temp = {"name":tagClouds[i].split(':')[0],"value":parseInt(tagClouds[i].split(':')[1])*3050};
+					datas.push(temp);
+				}
+			}
+
+    		var chart = document.getElementById('chart');
+    		var myChart = echarts.init(chart);
+    		var chart1 = document.getElementById('chart1');
+    		var myChart1 = echarts.init(chart1);
+
+			content.data["002"].series[0].data = datas;
+    		var option = content.data["002"];
+
+    		myChart.setOption(option);
+			myChart1.setOption(option);
+
+
+    	</script>
+		<script type="text/javascript">
+			$(function() {
+				
+				$(".content-telent-tab li").click(function() {
+					$(this).addClass("active").siblings().removeClass("active");
+					$(".content-telent-content > .telent-content-div").eq($(this).index()).show().siblings().hide();
+				});
+			})
+		</script>
+	</body>
+</html>

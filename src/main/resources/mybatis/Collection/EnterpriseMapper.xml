@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.forwork.cms.modules.collection.dao.EnterpriseDao">
+
+    <select id="get" resultType="com.forwork.cms.modules.collection.entity.Enterprise">
+        select
+        `id`,`entp_name`, `entp_simple_name`, `corporation`, `entp_Industry`,`entp_phone`, `entp_address`,
+        `main_business`,
+        `personnel_type`, `personnel_edu`, `enclosure_url`, `entp_intro`, `record_state`,`update_time`,`create_time`
+        from `ct_e_enterprise` where id = #{value}
+    </select>
+
+    <select id="list" resultType="com.forwork.cms.modules.collection.entity.Enterprise">
+        select
+        `id`,`entp_name`, `entp_simple_name`, `corporation`, `entp_Industry`,`entp_phone`, `entp_address`,
+        `main_business`,
+        `personnel_type`, `personnel_edu`, `enclosure_url`, `entp_intro`, `record_state`,`update_time`,`create_time`
+        from `ct_e_enterprise`
+        ORDER BY create_time
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from `ct_e_enterprise`
+    </select>
+
+    <insert id="save" parameterType="com.forwork.cms.modules.collection.entity.Enterprise"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `ct_e_enterprise`
+        (`entp_name`, `entp_simple_name`, `corporation`, `entp_Industry`,`entp_phone`, `entp_address`, `main_business`,
+        `personnel_type`, `personnel_edu`, `enclosure_url`, `entp_intro`, `record_state`,`update_time`,`create_time`)
+        VALUES
+        (#{entpName},#{entpSimpleName},#{corporation},#{entpIndustry},#{entpPhone},#{entpAddress},
+        #{mainBusiness},#{personnelType},#{personnelEdu},#{enclosureUrl},#{entpIntro},'1',NOW(),NOW())
+    </insert>
+
+    <update id="update" parameterType="com.forwork.cms.modules.collection.entity.Enterprise">
+        UPDATE `ct_e_enterprise`
+        <set>
+            <if test="entpName != null">`entp_name` = #{entpName},</if>
+            <if test="entpSimpleName != null">`entp_simple_name` = #{entpSimpleName},</if>
+            <if test="corporation != null">`corporation` = #{corporation},</if>
+            <if test="entpIndustry != null">`entp_Industry` = #{entpIndustry},</if>
+            <if test="entpPhone != null">`entp_Phone` = #{entpPhone},</if>
+            <if test="entpAddress != null">`entp_address` = #{entpAddress},</if>
+            <if test="mainBusiness != null">`main_business` = #{mainBusiness},</if>
+            <if test="personnelType != null">`personnel_type` = #{personnelType},</if>
+            <if test="personnelEdu != null">`personnel_edu` = #{personnelEdu},</if>
+            <if test="enclosureUrl != null">`enclosure_url` = #{enclosureUrl},</if>
+            <if test="entpIntro != null">`entp_intro` = #{entpIntro},</if>
+            <if test="recordState != null">`record_state` = #{recordState},</if>
+            `update_time` = NOW()
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <delete id="remove">
+        delete from `ct_e_enterprise` where id = #{value}
+    </delete>
+
+</mapper>

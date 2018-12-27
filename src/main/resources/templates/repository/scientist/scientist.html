@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:include="include :: header"></head>
+	<!--<head th:include="include :: header">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>资源库-科学家</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+
+
+	</head>-->
+	<link rel="stylesheet" type="text/css" href="/css/common/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/css/common/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/common/settings.css" />
+	<link rel="stylesheet" type="text/css" href="/css/common/dist/swiper.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/modules/scientist/scientist.css" />
+	<body class="site_full preloader3 menu_no_transparent classic_menu horizontal_menu light_header dark_sup_menu" style="background:#efefef">
+		<div id="main_wrapper">
+			<!-- End Header -->
+			<div class="content_section">
+				<div class="hm_main_content full_content clearfix">
+					<div class="entry-content">
+						<div class="maxW-1200 ">
+							<div class="science-screenlist">
+								<p class="tl f12 borderB padB20">科学家数据</p>
+								<ul class="w-100 borderB screenList marT50"  id="domain">
+									<label>行业类型:</label>
+									<li  >全部</li>
+									<li class="domainUl">节能环保</li>
+									<li class="domainUl">生物医药</li>
+									<li class="domainUl">机械制造</li>
+									<li class="domainUl">电子信息</li>
+									<li class="domainUl">化学化工</li>
+									<li class="domainUl">新能源</li>
+									<li class="domainUl">材料科学</li>
+									<li class="domainUl">其他</li>
+								</ul>
+								<!--<ul class="w-100 borderB screenList marT50">
+									<label>所在机构:</label>
+									<li>全部</li>
+									<li class="active">武汉</li>
+									<li>北京</li>
+									<li>上海</li>
+									<li>广州</li>
+									<li>深圳</li>
+									<li>天津</li>
+									<li>南京</li>
+								</ul>-->
+								<ul class="w-100  screenList marT50" id="selectedDomain">
+									<label>已选条件:</label>
+									<li class="color_ccc" onclick="delAllSelcted()" id="delAllDm">清除全部</li>
+								</ul>
+							</div>
+							<table id="exampleTable" ></table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:include="include::footer"></div>
+		<!--<script src="/js/appjs/repository/scientist/scientist.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="/js/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="/js/common/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/appjs/repository/scientist/scientist2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/js/layui.js"></script>
+		<script type="text/javascript" >
+
+		</script>
+	</body>
+</html>

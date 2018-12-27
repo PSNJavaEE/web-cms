@@ -1,0 +1,83 @@
+{
+  "content": {
+    "cityList": [{
+      "code": "999",
+      "name": "全部"
+    },{
+      "code": "010",
+      "name": "北京"
+    }],
+    "data": {
+      "999": {
+        "companyType": {
+          "title": {
+            "text": "企业类型分布"
+          },
+          "grid": {
+            "left": "3%",
+            "right": "4%",
+            "bottom": "3%",
+            "containLabel": true
+          },
+          "xAxis": [{
+            "type": "category",
+            "data": ["民企/私企", "国企", "外企(含港澳台)", "机关单位", "其他"],
+            "splitLine": {
+              "show": false
+            },
+            "axisTick": {
+              "alignWithLabel": false
+            },
+            "axisLine": {
+              "show": false
+            },
+            "axisTick": {
+              "show": false
+            },
+            "splitLine": {
+              "show": false
+            }
+          }],
+          "yAxis": [{
+            "type": "value",
+            "show": false,
+            "splitLine": {
+              "show": false
+            },
+            "splitArea": {
+              "show": false
+            }
+          }],
+          "series": [{
+            "type": "bar",
+            "barWidth": 20,
+            "label": {
+              "normal": {
+                "show": true,
+                "position": "top",
+                "formatter": "{c}%"
+              }
+            },
+            "itemStyle": {
+              "normal": {
+                "color": "function(params) {var colorList = ['#C33531', '#29AAE3', '#29AAE3', '#29AAE3', '#29AAE3'];return colorList[params.dataIndex]}"
+              }
+            },
+            "data": ["83.5", "7.6", "6.2", "1.8", "0.9"]
+          }]
+        },
+        "companyScaleList": {
+          "scaleRegion": [],
+          "proportion": []
+        },
+        "distributionList": {
+          "distributionRegion": [],
+          "proportion": []
+        }
+      }
+    }
+  },
+  "code": "200",
+  "message": "success",
+  "success": true
+}

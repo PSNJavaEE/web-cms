@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>需求成果库详情</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/common/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/common/style.css" />
+		<link rel="stylesheet" type="text/css" href="/css/common/settings.css" />
+		<link rel="stylesheet" type="text/css" href="/css/common/dist/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/modules/scientist/scientist.css" />
+		<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body class="site_full preloader3 menu_no_transparent classic_menu horizontal_menu light_header dark_sup_menu" >
+		<div id="main_wrapper">
+			<!-- End Header -->
+			<div class="content_section">
+				<div class="hm_main_content full_content clearfix">
+					<div class="entry-content">
+						<div class="demand-detail-content maxW-1200">
+							<ul class="demand-content-tab clearfix row marT30 " >
+								<li class="active marR0 over col-md-6 col-sm-6 fl">成果库</li>
+								<li class="fl marR0 over col-md-6 col-sm-6">需求库</li>
+							</ul>
+							<div class="content-demand-content maxW-1100 marT20 clearfix">
+								<div class="demand-content-div one row active col-xs-12">
+									<label class="db">
+										<p class="w-70 over f14 color_333 fl padT10" th:text="${outCome.title}"></p>
+										<a class="fr demand-btn">成果合作</a>
+									</label>
+									<label class="db">
+										<p class="w-50 dib over">成果领域:<span class="w-70 padR10 padL10 " th:text="${outCome.industry}"></span></p>
+										<p class="w-50 dib over">成果所属:<span class="w-70 padR10 padL10 " th:text="${outCome.belongs}"></span></p>
+									</label>
+									<label class="db"><p class="w-80 dib ">合作方式:<span class="w-70 padL10 padR10 ">技术转让</span></p></label>
+									<label class="db">
+										<p class="w-50 dib over">联系人:<span class="w-70 padL10 padR10 "  th:text="${outCome.linkman}"></span></p>
+										<p class="w-50 dib over">所属国籍:<span class="w-70 padL10 padR10 "  th:text="${outCome.country}"></span></p>
+									</label>
+									<label class="db"><p class="w-80 dib ">成果来源:<span class="w-70 padL10 padR10 " th:text="${outCome.source}"></span></p></label>
+									<label class="db"><p class="w-80 dib ">完成时间:<span class="w-70 padL10  padR10 " th:text="${outCome.completionTime}"></span></p></label>
+									<label>
+										<span class="fl">描述文字:</span><p class="w-70 padL10 fl" th:text="${outCome.intro}" ></p>
+									</label>
+									<div class="flow-content-div marT80 clearfix marL50 pr">
+										<dl class="flow-1">
+											<dt class="marB20 ">
+												<img class="db marA width-60" src="/industry/tijiao.png" />
+											</dt>
+											<dd class="f16 color_333">成果发布</dd>
+										</dl>
+										<b class="border-180 flow-2"></b>
+										<dl class="flow-3">
+											<dt class="marB20 ">
+												<img class="db marA width-60"   src="/industry/shenhe.png" />
+											</dt>
+											<dd class="f16 color_333">成果接洽</dd>
+										</dl>
+										<b class="border-180 flow-4"></b>
+										<dl class="flow-5">
+											<dt class="marB20 ">
+												<img class="db marA width-60" src="/industry/mianshi.png" />
+											</dt>
+											<dd class="f16 color_333">签订协议</dd>
+										</dl>
+										<b class="border-180 flow-6"></b>
+										<dl class="flow-7">
+											<dt class="marB20 ">
+												<img class="db marA width-60" src="/industry/tongzhi.png" />
+											</dt>
+											<dd class="f16 color_333">成果落地</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="demand-content-div one row col-xs-12">
+									<label class="db">
+										<p class="w-70 over f14 color_333 fl padT10">智慧车载-游艇-生态光伏农业庄园“新能源”系统及“RV房车”产业化投资</p>
+										<a class="fr demand-btn">成果合作</a>
+									</label>
+									<label class="db">
+										<p class="w-50 dib over">成果类型:<span class="w-70 padR10 padL10 ">专利</span></p>
+										<p class="w-50 dib over">专利信息:<span class="w-70 padR10 padL10 ">专利</span></p>
+									</label>
+									<label class="db"><p class="w-80 dib ">合作方式:<span class="w-70 padL10 padR10 ">技术转让</span></p></label>
+									<label class="db">
+										<p class="w-50 dib over">融资金额:<span class="w-70 padL10 padR10 ">500万</span></p>
+										<p class="w-50 dib over">融资占比:<span class="w-70 padL10 padR10 ">50%</span></p>
+									</label>
+									<label class="db"><p class="w-80 dib ">技术优势:<span class="w-70 padL10 padR10 ">领先行业标准24%</span></p></label>
+									<label class="db"><p class="w-80 dib ">市场前景:<span class="w-70 padL10  padR10 ">具备广大的市场空间和应用场景</span></p></label>
+									<label>
+										<span class="fl">描述文字:</span><p class="w-70 padL10 fl">中国传统太阳能光伏企业的“国际优化升级”方案！ 我们完全有理由相信，通过有成效的国际合作化“资源整合”发展模式，该项目必将成为引领中国传统光伏企业“升级转型”可持续性发展的典范，从而在“重新洗牌”后的国际光伏产业之“新时代竞争次序”中迅速占据一席“不可替代”的重要之地！ 本项目“运营方案”，广泛高效应用于“RV房车及游艇等高端旅游开发”领域，以及“智慧生态光伏农业庄园”等新兴产业化实施。 “北极の光”新能源RV光伏房车北极探险计划： CNSC世界最新型“新能源光伏RV房车（UAV光伏移动地面站系统）”“北极の光”白昼季探险之旅！ 全部行程：一，多伦多-哈利法克斯-大西洋；二，大西洋-落基山脉-太平洋；三，温哥华-育空-北极极地，历程两个月时间。此次探险计划为联邦非赢利机构“加拿大OCD中医防治基金会”筹款募捐项目！运用全球最先进无人机空中摄影系统，卫星导航跟踪拍摄全程探险历程，并以迄今最为独特的全新角度和高度纪录一个未知的地球之北极“制高点”领地！。</p>
+									</label>
+									<div class="flow-content-div marT80 clearfix marL50 pr">
+										<dl class="flow-1">
+											<dt class="marB20 ">
+												<img class="db marA width-60" src="/industry/tijiao.png" />
+											</dt>
+											<dd class="f16 color_333">成果发布</dd>
+										</dl>
+										<b class="border-180 flow-2"></b>
+										<dl class="flow-3">
+											<dt class="marB20 ">
+												<img class="db marA width-60" src="/industry/shenhe.png" />
+											</dt>
+											<dd class="f16 color_333">成果接洽</dd>
+										</dl>
+										<b class="border-180 flow-4"></b>
+										<dl class="flow-5">
+											<dt class="marB20 ">
+												<img class="db marA width-60" src="/industry/mianshi.png" />
+											</dt>
+											<dd class="f16 color_333">签订协议</dd>
+										</dl>
+										<b class="border-180 flow-6"></b>
+										<dl class="flow-7">
+											<dt class="marB20 ">
+												<img class="db marA width-60" src="/industry/tongzhi.png" />
+											</dt>
+											<dd class="f16 color_333">成果落地</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(function() {
+				$(".demand-content-tab li").click(function() {
+					$(this).addClass("active").siblings().removeClass("active");
+					$(".content-demand-content > .demand-content-div").eq($(this).index()).show().siblings().hide();
+				});
+			})
+			
+		</script>
+	</body>
+</html>

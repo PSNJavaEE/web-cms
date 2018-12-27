@@ -1,0 +1,46 @@
+{
+  "content": {
+    "cityList": [{
+        "code": "999",
+        "name": "全部"
+      },
+      {
+        "code": "010",
+        "name": "北京"
+      }
+    ],
+    "dataList": {
+      "999": {
+        "companyTypeList": {
+          "typeRegion": [],
+          "proportion": []
+        },
+        "companyScaleList": {
+          "scaleRegion": [],
+          "proportion": []
+        },
+        "distributionList": {
+          "distributionRegion": [],
+          "proportion": []
+        }
+      },
+      "010": {
+        "companyTypeList": {
+          "typeRegion": [],
+          "proportion": []
+        },
+        "companyScaleList": {
+          "scaleRegion": [],
+          "proportion": []
+        },
+        "distributionList": {
+          "distributionRegion": [],
+          "proportion": []
+        }
+      }
+    }
+  },
+  "code":"200",
+  "message":"success",
+  "success":true
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<div class="col-sm-12">
+						<h4>添加新闻</h4>
+					</div>
+					<form class="form-horizontal m-t" id="signupForm">
+						<!--<input id="id" name="id" type="hidden">-->
+						<div class="form-group">
+							<label class="col-sm-1 control-label">标题：</label>
+							<div class="col-sm-4">
+								<input id="title" name="title" class="form-control" type="text">
+							</div>
+							<label class="col-sm-1 control-label">链接：</label>
+							<div class="col-sm-4">
+								<input id="url" name="url" class="form-control" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">简介：</label>
+							<div class="col-sm-10">
+								<textarea id="description" name="description" class="form-control" rows="2"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">关键词：</label>
+							<div class="col-sm-4">
+								<input id="keywords" name="keywords" class="form-control" type="text" placeholder="关键词用英文逗号隔开">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">分类：</label>
+							<div class="col-sm-10">
+								<select name="categoryId" id="category" class="form-control" >
+									<option value="0">--请选择文章分类--</option>
+									<option th:each="nc : ${newsCategoryList}" th:value="${nc.id}" th:text="${nc.name}">分类</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group"><label class="col-sm-1 control-label">新闻类型：</label>
+							<div class="col-sm-10">
+								<select name="newsType" id="newsType" class="form-control" >
+									<option value="0">--请选择文章分类--</option>
+									<option value="1">&nbsp;&nbsp;&nbsp;&nbsp;本地新闻&nbsp;&nbsp;&nbsp;&nbsp;</option>
+									<option value="2">&nbsp;&nbsp;&nbsp;&nbsp;链接新闻&nbsp;&nbsp;&nbsp;&nbsp;</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">日期：</label>
+							<div class="col-sm-4">
+								<input id="createTime" name="createTime" autocomplete="off" class="form-control" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">是否推荐：</label>
+							<div class="col-sm-8">
+								<label class="radio-inline">
+									<input type="radio" name="commendState" value="2" /> 否
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="commendState" value="1" /> 是
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">是否显示：</label>
+							<div class="col-sm-8">
+								<label class="radio-inline">
+									<input type="radio" name="displayState" value="1" /> 是
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="displayState" value="2" /> 否
+								</label>
+							</div>
+						</div>
+
+						<div class="messsage border-none">
+							<label>上传图片<i class="choseone"></i></label>
+							<div class="upload pr">
+								<div class="upload pr">
+									<!-- <input type="file" id="uploadFile" name="uploadFile" class="uploadFile"/> -->
+									<!-- <img src="images/addfile.png" class="upimg" id="upimg"/> -->
+									<div class="form-group">
+										<div class="layui-input-block col-sm-8">
+											<div class="layui-upload-list pr">
+												<img src="/img/file-img.png" class="pa file-img"/>
+												<img src="/img/addfile.png" class="upimg" id="upload-logo" />
+											</div>
+											<input id="image" name="image"  type="hidden"/>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<p class="f12 color_B padT10">文件不能超过4M</p>
+						</div>
+
+						<div class="form-group ibox">
+							<input id="content" name="content" type="hidden"> <label
+								class="col-sm-1 control-label">内容：</label>
+							<div class="col-sm-11">
+								<div class="ibox-content no-padding">
+									<div id="content_sn" class="summernote"></div>
+								</div>
+							</div>
+						</div>
+
+						<input type="button" id="up-btn" class="up-btn" value="提交">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/layui.js"></script>
+<script type="text/javascript">
+$().ready(function() {
+
+	$('.summernote').summernote({
+		height : '220px',
+		lang : 'zh-CN',
+		callbacks: {
+            onImageUpload: function(files, editor, $editable) {
+                sendFile(files);
+            }
+        }
+	});
+});
+
+var image = "";
+$(function() {
+	var flag = true;
+
+	//上传图片
+		layui.use('upload', function() {
+				var $ = layui.jquery, upload = layui.upload;
+
+				//选完文件后不自动上传
+				upload.render({
+						elem: '#upload-logo',
+						url: '/inf/news/uploadImage',
+						auto: false,
+						processData: false ,    // 不处理数据
+						contentType: false,
+						multiple: true,
+						choose: function (obj) {
+							console.log(obj)
+								//预读本地文件示例，不支持ie8
+								obj.preview(function (index, file, result) {
+										$('#upload-logo').attr('src', result); //图片链接（base64）
+										$('.file-img').addClass('active');
+										$("#upload-logo").addClass("active");
+								});
+						},
+						bindAction: '#up-btn',
+						done: function (res) {
+								$("#image").attr('value', res.url);
+								console.log(res.url);
+								image = res.url;
+								ajaxSubmit();
+								//console.log()
+								return layer.msg(res.msg, {icon: res.status, time: 2000});
+						}
+				});
+		})
+})
+$("#up-btn").on('click',function(){
+	if(!$("#upload-logo").hasClass("active")){
+		ajaxSubmit();
+	}
+});
+function ajaxSubmit(){
+
+		var title = $("#title").val();
+		var url = $("#url").val();
+		var description = $("#description").val();
+		var keywords = $('#keywords').val();
+		var createTime = $('#createTime').val();
+		var categoryId=$("#category option:selected").val();
+		var newsType=$("#newsType option:selected").val();
+		var commendState =  $('input[name="commendState"]:checked').val();
+		var displayState =  $('input[name="displayState"]:checked').val();
+		var content = $("#content_sn").summernote('code');
+		$("#content").val(content);
+
+		if (title.trim().length<=0) {
+			mask("请输入标题")
+			return;
+		}else if (description.trim().length<1) {
+			mask("请输入新闻描述")
+			return;
+		}else if (newsType.trim().length<1) {
+			mask("请输入新闻类型")
+			return;
+		}else if (commendState.trim().length<1) {
+			mask("请选择是否推荐")
+			return;
+		}else if (displayState.trim().length<1) {
+			mask("请选择是否显示")
+			return;
+		}
+
+		var reqData = {};
+		reqData.title = title;
+		reqData.url = url;
+		reqData.description = description;
+		reqData.keywords = keywords;
+		reqData.newsType = newsType;
+		reqData.createTime = createTime;
+		reqData.categoryId = categoryId;
+		reqData.image = image;
+		reqData.commendState = commendState;
+		reqData.displayState = displayState;
+		reqData.content = content;
+		console.log(reqData)
+
+		$.ajax({
+		cache : true,
+		type : "POST",
+		url : "/inf/news/save",
+		data : reqData,// 你的formid
+		async : false,
+		error : function(request) {
+			parent.layer.alert("Connection error");
+		},
+		success : function(r) {
+			if (r.code == 0) {
+				// parent.layer.msg(r.msg);
+				// parent.reLoad();
+
+				if(confirm("操作成功,返回列表？")){
+					window.opener=null;
+					window.open('','_self');
+					window.close();
+					parent.location.reload()
+				}
+
+			} else {
+				parent.layer.alert(r.msg)
+			}
+		}
+	});
+}
+function mask(text){
+	$('body').append('<div class="prompt"></div>'+
+						'<p class="pText">'+text+'</p>');
+	setTimeout(function(){
+		$(".prompt").remove();
+		$(".pText").remove();
+	},1000)
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.forwork.cms.modules.industry.dao.OutComeDao">
+
+    <select id="get" resultType="com.forwork.cms.modules.industry.dto.OutComeDto">
+        SELECT `id`,`title`,`image_url`,`industry`,`source`,`completion_time`,`country`,`outcomes_status`,`belongs`,
+        `principals`,`linkman`,`intro`,`recom_channel`
+        from `fw_o_research_outcomes` WHERE id = #{value}
+    </select>
+
+    <select id="list" resultType="com.forwork.cms.modules.industry.dto.OutComeDto">
+        SELECT `id`,`title`,`image_url`,`industry`,`source`,`completion_time`,`country`,`outcomes_status`,`belongs`,
+        `principals`,`linkman`,`intro`,`recom_channel`
+        from `fw_o_research_outcomes`
+        <where>
+            1=1
+            <if test="industry != null"  > and `industry` in
+                <foreach collection="industry" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        order by id desc
+        <if test="offset != null and limit != null">
+            limit ${offset}, ${limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT count(*) from `fw_o_research_outcomes`
+        <where>
+            1=1
+            <if test="industry != null"  > and `industry` in
+                <foreach collection="industry" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.forwork.cms.modules.repository.dao.ScientistDao">
+
+    <select id="get" resultType="com.forwork.cms.modules.repository.entity.ScSelf">
+        select * from `sc_self`  where uri = #{value}
+	</select>
+
+    <select id="list" resultType="com.forwork.cms.modules.repository.entity.ScSelf">
+        select *
+        from `sc_self`
+        <where>
+            1=1
+            <if test="domain != null"> and `domain` in
+                <foreach item="dm" index="index" collection="domain" open="(" separator="," close=")">
+                    #{dm}
+                </foreach>
+            </if>
+            <if test="scOrg != null and scOrg != ''"> and sc_org = #{scOrg} </if>
+        </where>
+        order by id desc
+        <if test="offset != null and limit != null">
+            limit ${offset}, ${limit}
+        </if>
+    </select>
+
+
+    <select id="pplist" resultType="com.forwork.cms.modules.repository.entity.ScPaper">
+        select *
+        from `sc_paper`
+        <where>
+            1=1
+            <if test="uri != null and uri != ''"> and uri = #{uri} </if>
+        </where>
+        order by id desc
+        <if test="offset != null and limit != null">
+            limit ${offset}, ${limit}
+        </if>
+    </select>
+
+    <select id="randomPpList" resultType="com.forwork.cms.modules.repository.entity.ScPaper">
+        select *
+        from `sc_paper`
+        <where>
+            1=1
+            <if test="ids != null "> and id in
+                <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+        order by id desc
+
+    </select>
+
+
+
+    <select id="palist" resultType="com.forwork.cms.modules.repository.entity.ScPatent">
+        select *
+        from `sc_patent`
+        <where>
+            1=1
+            <if test="uri != null and uri != ''"> and uri = #{uri} </if>
+        </where>
+        order by id DESC
+        <if test="offset != null and limit != null">
+            LIMIT ${offset}, ${limit}
+        </if>
+    </select>
+
+    <select id="randomPaList" resultType="com.forwork.cms.modules.repository.entity.ScPatent">
+        select *
+        from `sc_patent`
+        <where>
+            1=1
+            <if test="ids != null "> and id in
+                <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+        order by id desc
+
+    </select>
+
+    <select id="prlist" resultType="com.forwork.cms.modules.repository.entity.ScProject">
+        select *
+        from `sc_project`
+        <where>
+            1=1
+            <if test="uri != null and uri != ''"> and uri = #{uri} </if>
+        </where>
+        order by id desc
+        <if test="offset != null and limit != null">
+            limit ${offset}, ${limit}
+        </if>
+    </select>
+
+    <select id="randomPrList" resultType="com.forwork.cms.modules.repository.entity.ScProject">
+        select *
+        from `sc_project`
+        <where>
+            1=1
+            <if test="ids != null "> and id in
+                <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+        order by id desc
+
+    </select>
+
+    <select id="telist" resultType="com.forwork.cms.modules.repository.entity.ScTeam">
+        select *
+        from `sc_team`
+        <where>
+            1=1
+            <if test="uri != null and uri != ''"> and uri = #{uri} </if>
+        </where>
+        order by id desc
+        <if test="offset != null and limit != null">
+            limit ${offset}, ${limit}
+        </if>
+    </select>
+
+    <select id="randomTeList" resultType="com.forwork.cms.modules.repository.entity.ScTeam">
+        select *
+        from `sc_team`
+        <where>
+            1=1
+            <if test="ids != null "> and id in
+                <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+        order by id desc
+
+    </select>
+
+
+    <select id="colist" resultType="com.forwork.cms.modules.repository.entity.ScCoordinate">
+        select *
+        from `sc_coordinate`
+        <where>
+            1=1
+            <if test="uri != null and uri != ''"> and uri = #{uri} </if>
+        </where>
+        order by id desc
+        <if test="offset != null and limit != null">
+            limit ${offset}, ${limit}
+        </if>
+    </select>
+
+
+
+    <select id="count" resultType="int">
+        select count(*) from `sc_self`
+        <where>
+            1=1
+            <if test="domain != null">and `domain` in
+                <foreach item="dm" index="index" collection="domain" open="(" separator="," close=")">
+                    #{dm}
+                </foreach>
+            </if>
+            <if test="scOrg != null and scOrg != ''"> and sc_org = #{scOrg} </if>
+        </where>
+    </select>
+
+
+</mapper>

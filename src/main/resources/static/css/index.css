@@ -1,0 +1,257 @@
+.messsage {
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	padding: 15px 0;
+	background: #fff;
+	display: block;
+	border-bottom: 1px solid #E7E7E7;
+}
+
+.messsage label {
+	width: 20%;
+	font-size: 14px;
+	margin-right: 10px;
+	color: #666;
+}
+
+.messsage input {
+	width: 55%;
+	border: none;
+	text-align: right;
+	float: right;
+	font-size: 15px;
+	color:#282A2E;
+}
+
+input::-webkit-input-placeholder {
+	color: #ccc;
+}
+
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #ccc;
+}
+
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #ccc;
+}
+
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #ccc;
+}
+
+.messsage select {
+	width:auto;
+	padding: 0 20px;
+	margin: 0;
+	font-size: 15px;
+	border: none;
+	text-align: right;
+	text-align-last: right;
+	float: right;
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	background: url(/inforacquisition/images/Path.png) no-repeat scroll right center transparent;
+	color:#282A2E;
+}
+
+.messsage select option {
+	text-align: right;
+	color:#282A2E;
+}
+.messsage select option:first-child {
+	text-align: right;
+	color:#ccc;
+}
+.maxW-750 {
+	max-width: 750px;
+	margin: 0 auto
+}
+
+.top-img {
+	width: 100%;
+	display: block;
+}
+
+.basic-form {
+	width: 95%;
+	margin: 0 auto;
+	position: absolute;
+	left:2.5%;
+	top: 100px;
+	background: #fff;
+	box-shadow: 0px 4px 12px 0px rgba(88, 131, 195, 0.15);
+	border-radius: 4px 4px 5px 5px;
+}
+.choseone{
+	display: inline-block;
+	font-size: 12px;
+	color:#999999;
+	padding:0 10px;
+	font-style: normal;
+}
+.border-none{
+	border: none!important;
+}
+.upload{
+	width:70px;
+	height: 70px;
+	position: relative;
+}
+.layui-upload-list{
+	width:70px;
+	height:70px;
+	overflow: hidden;
+	margin-top:10px;
+}
+.layui-upload-file{
+	position: absolute;  
+	width: 100%;  
+	height: 100%;  
+	top: 0;  
+	left: 0;  
+	outline: none;  
+	background-color: transparent;  
+	filter:alpha(opacity=0);  
+	-moz-opacity:0;  
+	-khtml-opacity: 0;  
+	opacity: 0; 	
+}
+.upimg{
+	width:100%;
+	height: 100%;
+	display: block;
+	
+}
+.color_B{
+	color:#B0B2B4;
+}
+.color_28{
+	color: #282A2E;
+}
+.up-btn{
+	width:200px;
+	padding:10px 0;
+	background:rgba(148,172,250,1);
+	border-radius:22px;
+	display: block;
+	margin: 30px auto;
+	color:#fff;
+	font-size: 18px;
+	text-align: center;
+}
+.check-li{
+	padding:6px 16px;
+	text-align: center;
+	font-size: 14px;
+	color:#282A2E;
+	border-radius:18px;
+	border:1px solid rgba(191,194,197,1);
+	float:left;
+	position: relative;
+}
+.check-li.active{
+	background:rgba(13,204,170,1);
+	border:1px solid rgba(13,204,170,1);
+	border-radius:16px;
+	color:#fff;
+}
+.check-li .otherInput{
+	width:80px;
+	text-align: center;
+}
+.otherInput::-webkit-input-placeholder {
+	color: #ccc;
+}
+
+.otherInput::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #ccc;
+}
+
+.otherInput:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #ccc;
+}
+
+.otherInput:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #ccc;
+}
+.message-textarea{
+	width:100%;
+	height:104px;
+	resize: none;
+	margin-top:8px;
+	font-size:15px;
+	color:#333;
+}
+textarea::-webkit-input-placeholder {
+	color: #ccc;
+}
+
+textarea::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #ccc;
+}
+
+textarea:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #ccc;
+}
+
+textarea:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #ccc;
+}
+.enter-up-btn{
+	width:200px;
+	padding:10px 0;
+	background:rgba(12,220,183,1);
+	border-radius:22px;
+	display: block;
+	margin: 30px auto;
+	color:#fff;
+	font-size: 18px;
+	text-align: center;
+}
+.checkBox{
+	appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+	height:30px;
+	position: absolute;
+	top:0;
+	left:0;
+}
+a:link {
+ color: #fff;
+ text-decoration: none;
+}
+a:visited {
+ color: #fff;
+ text-decoration: none;
+}
+a:hover {
+ color: #fff;
+ text-decoration: none;
+}
+input[type="button"], input[type="submit"], input[type="reset"] {
+     -webkit-appearance: none;
+}
+.file-img{
+	width:100%;
+	height:100%;
+	display: block;
+	top:0;
+	left:0;
+	z-index: 9;
+	display: none;
+}
+.file-img.active{
+	display: block;
+}

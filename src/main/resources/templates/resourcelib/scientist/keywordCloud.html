@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="/css/common/reset.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/style.css" />
+<!-- 改成自己的index.css -->
+<link rel="stylesheet" type="text/css" href="/css/modules/resourcelib/scientist/scientistdetail.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/settings.css" />
+<link rel="stylesheet" type="text/css" href="/css/common/dist/swiper.min.css" />
+<head th:include="include :: header"></head>
+    <body>
+    	<div id="chart" style="width: 500px; height: 350px;"></div>
+
+        <script src="http://gallerybox.echartsjs.com/dep/echarts/3.8.0/echarts.min.js"></script>
+        <script src="http://data-visual.cn/datav/src/js/echarts/extension/echarts-wordcloud.min.js"></script>
+
+        <script src="scientistdetaildata.js"></script>
+    	<script>
+    		var chart = document.getElementById('chart');
+    		var myChart = echarts.init(chart);
+    		var option = content.data["002"];
+    		myChart.setOption(option);
+    	</script>
+    </body>
+    </html>
